@@ -39,3 +39,10 @@ readCSV = csv.reader(nodes, delimiter=',')
 for row in readCSV:
     node = Node(personname, id=row[0], gedcomID = row[1], sex = row[2])
     graph.create(node)
+
+
+for index, row in edges.iterrows():
+    source_node = graph.find_one(nodename, property_key='id', property_value=int(row['source']))
+    dest_node = graph.find_one(nodename, property_key='id', property_value = int(row['dest']))
+    relation = Relationship(source_node, edgename, dest_node, rating = int(row['rating']))
+    graph.create(relation)

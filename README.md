@@ -41,3 +41,7 @@ load csv with headers from "file..." as persons match
 (p:Person {id: persons.id, gedcomID: presons.gedcomID, sex: persons.sex}),
 (b: Name {personID: persons.nameID}) create (a)-[r:NAME_IS]->(b)
 ```
+
+##TO DO
+Create Index
+Good IDs
