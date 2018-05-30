@@ -24,3 +24,20 @@ WHERE a.id = 'I23836'
 WITH p
 RETURN p
 ```
+
+# GEDCOM to CSV
+
+import csv into database
+
+```
+load csv with headers from "file..." as persons create 
+(p:Person {id: persons.id, gedcomID: presons.gedcomID, sex: persons.sex})
+```
+
+create relationships
+
+```
+load csv with headers from "file..." as persons match 
+(p:Person {id: persons.id, gedcomID: presons.gedcomID, sex: persons.sex}),
+(b: Name {personID: persons.nameID}) create (a)-[r:NAME_IS]->(b)
+```
